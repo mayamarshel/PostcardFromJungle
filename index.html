@@ -35,28 +35,57 @@
 </head>
 <body>
 
-<div class="slideshow-container">
-    <div class="slides">
-        <img src="https://via.placeholder.com/800x400?text=Image+1" alt="Image 1">
-        <div class="caption">Caption for Image 1</div>
-    </div>
-    <div class="slides">
-        <img src="https://via.placeholder.com/800x400?text=Image+2" alt="Image 2">
-        <div class="caption">Caption for Image 2</div>
-    </div>
-    <div class="slides">
-        <img src="https://via.placeholder.com/800x400?text=Image+3" alt="Image 3">
-        <div class="caption">Caption for Image 3</div>
-    </div>
-    <!-- Add more images and captions as needed -->
+<div class="slideshow-container" id="slideshow-container">
+    <!-- The slides will be generated here dynamically by JavaScript -->
 </div>
 
 <script>
     let slideIndex = 0;
 
+    // An array of image sources and their corresponding captions
+    const images = [
+        { src: "https://via.placeholder.com/800x400?text=Image+1", caption: "Alwë thalasha riniel." },
+        { src: "https://via.placeholder.com/800x400?text=Image+2", caption: "Veldor isëna rianor." },
+        { src: "https://via.placeholder.com/800x400?text=Image+3", caption: "Telune isha therath" },
+        { src: "https://via.placeholder.com/800x400?text=Image+4", caption: "Meleth drathor solanith." },
+        { src: "https://via.placeholder.com/800x400?text=Image+5", caption: "Silorë anarin thalev." },
+        { src: "https://via.placeholder.com/800x400?text=Image+6", caption: "Korath valëa dorith." },
+        { src: "https://via.placeholder.com/800x400?text=Image+7", caption: "Drána faelan virendhil." },
+        { src: "https://via.placeholder.com/800x400?text=Image+8", caption: "Rhalis târa shéla." },
+        { src: "https://via.placeholder.com/800x400?text=Image+9", caption: "Tirëlen nalari éthelan." },
+        { src: "https://via.placeholder.com/800x400?text=Image+10", caption: "Vanya thorin illar." },
+        { src: "https://via.placeholder.com/800x400?text=Image+11", caption: "Isilrë faenarth glienar." },
+        { src: "https://via.placeholder.com/800x400?text=Image+12", caption: "Dhoral onar venethil." },
+        { src: "https://via.placeholder.com/800x400?text=Image+13", caption: "Aelora anhal varith." },
+        { src: "https://via.placeholder.com/800x400?text=Image+14", caption: "Sharen ildorith rêthar." },
+        { src: "https://via.placeholder.com/800x400?text=Image+15", caption: "Aralûn darith elenor." },
+        { src: "https://via.placeholder.com/800x400?text=Image+16", caption: "Thalêren silva drinar." }
+    ];
+
+    // Generate the slideshow dynamically using the images array
+    const slideshowContainer = document.getElementById("slideshow-container");
+
+    images.forEach((image, index) => {
+        const slide = document.createElement("div");
+        slide.className = "slides";
+
+        const img = document.createElement("img");
+        img.src = image.src;
+        img.alt = "Image " + (index + 1);
+
+        const caption = document.createElement("div");
+        caption.className = "caption";
+        caption.innerHTML = image.caption;
+
+        slide.appendChild(img);
+        slide.appendChild(caption);
+        slideshowContainer.appendChild(slide);
+    });
+
+    // Function to show the slides
     function showSlides() {
-        let slides = document.getElementsByClassName("slides");
-        
+        const slides = document.getElementsByClassName("slides");
+
         // Hide all slides
         for (let i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";
@@ -79,3 +108,4 @@
 
 </body>
 </html>
+
