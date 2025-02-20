@@ -1,1 +1,81 @@
-<h1>hello world</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slideshow</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+        .slides {
+            display: none;
+            position: absolute;
+            width: 100%;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+        .caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slideshow-container">
+    <div class="slides">
+        <img src="https://via.placeholder.com/800x400?text=Image+1" alt="Image 1">
+        <div class="caption">Caption for Image 1</div>
+    </div>
+    <div class="slides">
+        <img src="https://via.placeholder.com/800x400?text=Image+2" alt="Image 2">
+        <div class="caption">Caption for Image 2</div>
+    </div>
+    <div class="slides">
+        <img src="https://via.placeholder.com/800x400?text=Image+3" alt="Image 3">
+        <div class="caption">Caption for Image 3</div>
+    </div>
+    <!-- Add more images and captions as needed -->
+</div>
+
+<script>
+    let slideIndex = 0;
+
+    function showSlides() {
+        let slides = document.getElementsByClassName("slides");
+        
+        // Hide all slides
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        // Show the current slide
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+        slides[slideIndex - 1].style.display = "block";
+
+        // Change slide every 3 seconds
+        setTimeout(showSlides, 3000);
+    }
+
+    // Initialize the slideshow
+    showSlides();
+</script>
+
+</body>
+</html>
