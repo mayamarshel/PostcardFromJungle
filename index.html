@@ -57,6 +57,9 @@
     </style>
 </head>
 <body>
+    <h2>Click the button to start playing sound</h2>
+    <button id="playSoundButton">Play Sound</button>
+    <button id="muteButton">Mute</button>
 
 <div class="slideshow-container" id="slideshow-container">
     <!-- The slides will be generated here dynamically by JavaScript -->
@@ -139,33 +142,37 @@
         new Audio('https://raw.githubusercontent.com/mayamarshel/PostcardFromJungle/refs/heads/main/sounds/monstersoundJunglePostcard.wavd')
     ];
 
-    let currentAudioIndex = 0;
-    let isMuted = false;
+  
+        let currentAudioIndex = 0;
+        let isMuted = false;
 
-    // Function to play the current audio and loop
-    function playAudio() {
-        audioFiles[currentAudioIndex].play();
-        
-        // When the audio finishes, play the next one
-        audioFiles[currentAudioIndex].onended = function() {
-            currentAudioIndex++;
-            if (currentAudioIndex >= audioFiles.length) {
-                currentAudioIndex = 0;  // Loop back to the first audio
-            }
-            playAudio(); // Play the next audio
-        };
-    }
+        // Function to play the current audio and loop
+        function playAudio() {
+            audioFiles[currentAudioIndex].play();
+            
+            // When the audio finishes, play the next one
+            audioFiles[currentAudioIndex].onended = function() {
+                currentAudioIndex++;
+                if (currentAudioIndex >= audioFiles.length) {
+                    currentAudioIndex = 0;  // Loop back to the first audio
+                }
+                playAudio(); // Play the next audio
+            };
+        }
 
-    // Start playing the first audio
-    playAudio();
+        // Add event listener to the "Play Sound" button to start playing audio
+        const playSoundButton = document.getElementById('playSoundButton');
+        playSoundButton.addEventListener('click', function() {
+            playAudio(); // Start playing the first audio when the button is clicked
+        });
 
-    // Button functionality to mute/unmute the audio
-    const muteButton = document.getElementById('muteButton');
-    muteButton.addEventListener('click', function() {
-        isMuted = !isMuted;
-        audioFiles.forEach(audio => audio.muted = isMuted); // Set all audio elements to muted/unmuted
-        muteButton.textContent = isMuted ? 'Unmute' : 'Mute'; // Toggle button text
-    });
+        // Button functionality to mute/unmute the audio
+        const muteButton = document.getElementById('muteButton');
+        muteButton.addEventListener('click', function() {
+            isMuted = !isMuted;
+            audioFiles.forEach(audio => audio.muted = isMuted); // Set all audio elements to muted/unmuted
+            muteButton.textContent = isMuted ? 'Unmute' : 'Mute'; // Toggle button text
+        });
 </script>
 
 </body>
