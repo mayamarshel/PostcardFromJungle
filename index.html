@@ -40,6 +40,20 @@
             text-align: center;
             margin-top: 10px;
         }
+         body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -47,6 +61,8 @@
 <div class="slideshow-container" id="slideshow-container">
     <!-- The slides will be generated here dynamically by JavaScript -->
 </div>
+
+<button id="muteButton">Mute</button>
 
 <script>
     let slideIndex = 0;
@@ -113,6 +129,43 @@
 
     // Initialize the slideshow
     showSlides();
+
+
+    
+     // Audio files array
+    const audioFiles = [
+        new Audio('audio1.wav'),
+        new Audio('audio2.wav'),
+        new Audio('audio3.wav')
+    ];
+
+    let currentAudioIndex = 0;
+    let isMuted = false;
+
+    // Function to play the current audio and loop
+    function playAudio() {
+        audioFiles[currentAudioIndex].play();
+        
+        // When the audio finishes, play the next one
+        audioFiles[currentAudioIndex].onended = function() {
+            currentAudioIndex++;
+            if (currentAudioIndex >= audioFiles.length) {
+                currentAudioIndex = 0;  // Loop back to the first audio
+            }
+            playAudio(); // Play the next audio
+        };
+    }
+
+    // Start playing the first audio
+    playAudio();
+
+    // Button functionality to mute/unmute the audio
+    const muteButton = document.getElementById('muteButton');
+    muteButton.addEventListener('click', function() {
+        isMuted = !isMuted;
+        audioFiles.forEach(audio => audio.muted = isMuted); // Set all audio elements to muted/unmuted
+        muteButton.textContent = isMuted ? 'Unmute' : 'Mute'; // Toggle button text
+    });
 </script>
 
 </body>
