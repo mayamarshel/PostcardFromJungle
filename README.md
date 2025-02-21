@@ -10,33 +10,48 @@ Note: all three audio clips do play but there is sometimes a large delay inbetwe
 
 Alwë thalasha riniel.
 "The stars will guide us."
+
 Veldor isëna rianor.
 "We are bound by the ancient oath."
+
 Telune isha therath.
 "The winds speak of forgotten tales."
+
 Meleth drathor solanith.
 "Love thrives in the heart of night."
+
 Silorë anarin thalev.
 "The moon watches over the earth."
+
 Korath valëa dorith.
 "Wisdom echoes in the silence."
+
 Drána faelan virendhil.
 "The sun awakens the world."
+
 Rhalis târa shéla.
 "Darkness stirs beneath the surface."
+
 Tirëlen nalari éthelan.
 "All paths lead to the same end."
+
 Vanya thorin illar.
 "Peace will come in time."
+
 Isilrë faenarth glienar.
 "The dawn breaks with a song."
+
 Dhoral onar venethil.
 "The earth trembles with power."
+
 Aelora anhal varith.
 "The skies are painted with fire."
+
 Sharen  ildorith rêthar.
 "Fear fades in the light of truth."
+
 Aralûn darith elenor.
 "Hope lies beyond the horizon."
+
 Thalêren silva drinar.
 "The sea calls to those who listen."
