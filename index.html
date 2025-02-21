@@ -4,57 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Slideshow</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: blue;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .slideshow-container {
-            position: relative;
-            max-width: 100%;
-            text-align: center; /* Center the content */
-        }
-        .slides {
-            display: none;
-            position: relative;
-            margin: 0 auto;
-            width: 300px;  /* Set image width */
-            height: 300px; /* Set image height */
-        }
-        img {
-            width: 300px; /* Set image width */
-            height: 300px; /* Set image height */
-        }
-        .caption {
-            position: relative;
-            bottom: 10px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 10px;
-            font-size: 18px;
-            text-align: center;
-            margin-top: 10px;
-        }
-         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin-top: 20px;
-            cursor: pointer;
-        }
-    </style>
+<style>
+    /* Overall body styling */
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%); /* Jungle-like gradient background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: white;
+    }
+
+    /* Slideshow container */
+    .slideshow-container {
+        position: relative;
+        max-width: 100%;
+        text-align: center; /* Center the content */
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Soft shadow around the slideshow */
+        overflow: hidden;
+    }
+
+    /* Each individual slide styling */
+    .slides {
+        display: none;
+        position: relative;
+        margin: 0 auto;
+        width: 300px; /* Set image width */
+        height: 300px; /* Set image height */
+        border-radius: 15px; /* Rounded corners for the images */
+    }
+
+    /* Image styling */
+    img {
+        width: 100%; /* Ensure the image fills the slide container */
+        height: 100%; /* Ensure the image fills the slide container */
+        border-radius: 15px; /* Rounded corners for the images */
+        object-fit: cover; /* Keep the aspect ratio while filling the box */
+    }
+
+    /* Caption styling */
+    .caption {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.7); /* Darker background for captions */
+        color: white;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
+        margin: 0 20px; /* Add padding to the left and right of the caption */
+    }
+
+    /* Button styling */
+    button {
+        background-color: #ffb300; /* Jungle yellow */
+        padding: 12px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Soft shadow */
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+        background-color: #d78f00; /* Darker shade on hover */
+        transform: scale(1.05); /* Slight zoom effect on hover */
+    }
+
+    button:focus {
+        outline: none; /* Remove outline on button focus */
+    }
+</style>
+
 </head>
 <body>
     <button id="playSoundButton">Play Sound</button>
