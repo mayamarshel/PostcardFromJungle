@@ -134,34 +134,34 @@
 
     
      // Audio files array
-    const audioFiles = [
-        new Audio('sounds/birdsChirping.mp4'),
-        new Audio('sounds/OddanimalScreeching.mp4'),
-        new Audio('sounds/monstersoundJunglePostcard.mp4')
-        // new Audio('https://raw.githubusercontent.com/mayamarshel/PostcardFromJungle/refs/heads/main/sounds/birdsChirping.wav'),
-        // new Audio('https://raw.githubusercontent.com/mayamarshel/PostcardFromJungle/refs/heads/main/sounds/monstersoundJunglePostcard.wav ')
-        // new Audio('https://raw.githubusercontent.com/mayamarshel/PostcardFromJungle/main/sounds/OddanimalScreeching.wav'),
-        // new Audio('https://raw.githubusercontent.com/mayamarshel/PostcardFromJungle/main/sounds/birdsChirping.wav'),
-        // new Audio('https://raw.githubusercontent.com/mayamarshel/PostcardFromJungle/main/sounds/monstersoundJunglePostcard.wav')
-    ];
+   const audioFiles = [
+    new Audio('sounds/birdsChirping.mp3'),
+    new Audio('sounds/OddanimalScreeching.mp3'),
+    new Audio('sounds/monstersoundJunglePostcard.mp3')
+];
 
-  
-        let currentAudioIndex = 0;
-        let isMuted = false;
+let currentAudioIndex = 0;
+let isMuted = false;
 
-        // Function to play the current audio and loop
-        function playAudio() {
-            audioFiles[currentAudioIndex].play();
-            
-            // When the audio finishes, play the next one
-            audioFiles[currentAudioIndex].onended = function() {
-                currentAudioIndex++;
-                if (currentAudioIndex >= audioFiles.length) {
-                    currentAudioIndex = 0;  // Loop back to the first audio
-                }
-                playAudio(); // Play the next audio
-            };
+// Function to play the current audio and loop
+function playAudio() {
+    // Play the current audio file
+    audioFiles[currentAudioIndex].play();
+
+    // When the current audio finishes, play the next one
+    audioFiles[currentAudioIndex].onended = function() {
+        // Move to the next audio file
+        currentAudioIndex++;
+
+        // If we've reached the end, loop back to the first audio
+        if (currentAudioIndex >= audioFiles.length) {
+            currentAudioIndex = 0;  // Loop back to the first audio
         }
+
+        // Play the next audio
+        playAudio();
+    };
+}
 
         // Add event listener to the "Play Sound" button to start playing audio
         const playSoundButton = document.getElementById('playSoundButton');
