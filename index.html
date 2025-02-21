@@ -133,8 +133,8 @@
 
 
     
-   // Audio files array
-const audioFiles = [
+  // Audio files array
+   const audioFiles = [
     new Audio('sounds/birdsChirping.mp3'),
     new Audio('sounds/OddanimalScreeching.mp3'),
     new Audio('sounds/monstersoundJunglePostcard.mp3')
@@ -143,22 +143,13 @@ const audioFiles = [
 let currentAudioIndex = 0;
 let isMuted = false;
 
-// Function to preload the audio files
-audioFiles.forEach(audio => {
-    audio.preload = 'auto';  // Preload each audio to minimize the loading time
-});
-
 // Function to play the current audio and loop
 function playAudio() {
-    const audio = audioFiles[currentAudioIndex];
-
-    // Ensure audio is ready to play
-    audio.play().catch(error => {
-        console.error("Error playing audio:", error); // If there's an issue with the audio file, log it
-    });
+    // Play the current audio file
+    audioFiles[currentAudioIndex].play();
 
     // When the current audio finishes, play the next one
-    audio.onended = function() {
+    audioFiles[currentAudioIndex].onended = function() {
         // Move to the next audio file
         currentAudioIndex++;
 
@@ -167,24 +158,24 @@ function playAudio() {
             currentAudioIndex = 0;  // Loop back to the first audio
         }
 
-        // Play the next audio immediately
+        // Play the next audio
         playAudio();
     };
 }
 
-// Add event listener to the "Play Sound" button to start playing audio
-const playSoundButton = document.getElementById('playSoundButton');
-playSoundButton.addEventListener('click', function() {
-    playAudio(); // Start playing the first audio when the button is clicked
-});
+        // Add event listener to the "Play Sound" button to start playing audio
+        const playSoundButton = document.getElementById('playSoundButton');
+        playSoundButton.addEventListener('click', function() {
+            playAudio(); // Start playing the first audio when the button is clicked
+        });
 
-// Button functionality to mute/unmute the audio
-const muteButton = document.getElementById('muteButton');
-muteButton.addEventListener('click', function() {
-    isMuted = !isMuted;
-    audioFiles.forEach(audio => audio.muted = isMuted); // Set all audio elements to muted/unmuted
-    muteButton.textContent = isMuted ? 'Unmute' : 'Mute'; // Toggle button text
-});
+        // Button functionality to mute/unmute the audio
+        const muteButton = document.getElementById('muteButton');
+        muteButton.addEventListener('click', function() {
+            isMuted = !isMuted;
+            audioFiles.forEach(audio => audio.muted = isMuted); // Set all audio elements to muted/unmuted
+            muteButton.textContent = isMuted ? 'Unmute' : 'Mute'; // Toggle button text
+        });
 
 </script>
 
